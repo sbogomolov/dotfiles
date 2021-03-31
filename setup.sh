@@ -12,9 +12,8 @@ add_line() {
 
     echo "Config file: $file"
 
-    file_exists=$(test -f "$file")
     if ! grep -Fq "$line" "$file"; then
-        if (( file_exists == 0 )); then
+        if [ -f "$file" ]; then
             echo >> "$file"
         else
             echo "- Creating file: $file"
