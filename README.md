@@ -1,5 +1,32 @@
 ## Common configuration
 
+### Packages
+
+- Install required packages
+```sh
+sudo dnf install git compton
+```
+
+- Install xcape (https://github.com/alols/xcape)
+```sh
+sudo dnf install -y git gcc make pkgconfig libX11-devel libXtst-devel libXi-devel
+git clone git@github.com:alols/xcape.git
+cd xcape
+make
+sudo make install
+```
+
+- Configure RPMfusion repositories
+```sh
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+```
+
+- Install FFmpeg
+```sh
+sudo dnf -y install ffmpeg
+```
+
 ### General setup
 
 - Run ./setup.sh

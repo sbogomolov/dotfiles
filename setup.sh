@@ -60,7 +60,11 @@ if [ ! -f "$PROFILE" ]; then
     touch "$PROFILE"
 fi
 
+add_line "$PROFILE" ". ~/.dotfiles/setup_cmd_prompt" "# Setup command prompt"
 add_line "$PROFILE" ". ~/.dotfiles/start_ssh_agent" "# Start ssh-agent"
+
+mkdir -p $HOME/.config/{i3,gtk-3.0}
+
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"

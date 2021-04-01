@@ -196,6 +196,9 @@ mode "exit: [l]ogout, [r]eboot, sh[u]tdown, [s]leep" {
 }
 bindsym $mod+x mode "exit: [l]ogout, [r]eboot, sh[u]tdown, [s]leep"
 
+# Pulseaudio System Tray applet
+for_window [class="Pavucontrol"] floating enable
+exec --no-startup-id pasystray
 
 #
 # Keyboard
