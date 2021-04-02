@@ -57,7 +57,7 @@ create_symlink() {
 }
 
 
-PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pasystray openssh-askpass)
+PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pavucontrol pasystray openssh-askpass)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -83,11 +83,12 @@ echo "- Installing ffmpeg"
 sudo dnf -y install ffmpeg
 
 
-add_line "$SHELLRC" ". ~/.dotfiles/setup_cmd_prompt" "# Setup command prompt"
+add_line "$SHELLRC" ". ~/.dotfiles/set_cmd_prompt" "# Set command prompt"
 add_line "$PROFILE" ". ~/.dotfiles/start_ssh_agent" "# Start ssh-agent"
 
 
 mkdir -p $HOME/.config/{i3,i3status,gtk-3.0}
+mkdir -p $HOME/.config/fontconfig/conf.d
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
@@ -96,6 +97,7 @@ create_symlink ".gtkrc-2.0" "$HOME/.gtkrc-2.0"
 create_symlink ".urxvt" "$HOME/.urxvt"
 create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
+create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
 
 
 SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
