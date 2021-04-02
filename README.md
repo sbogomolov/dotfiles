@@ -4,7 +4,7 @@
 
 - Install required packages
 ```sh
-sudo dnf install git compton
+sudo dnf install git compton adwaita-gtk2-theme ImageMagick pasystray
 ```
 
 - Install xcape (https://github.com/alols/xcape)
@@ -16,20 +16,11 @@ make
 sudo make install
 ```
 
-- Configure RPMfusion repositories
+- Configure RPMfusion repositories and install ffmpeg
 ```sh
 sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-```
-
-- Install FFmpeg
-```sh
 sudo dnf -y install ffmpeg
-```
-
-- Install Adwaita GTK2 themes
-```sh
-sudo dnf -y install adwaita-gtk2-theme
 ```
 
 ### General setup

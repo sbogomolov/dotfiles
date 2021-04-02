@@ -65,7 +65,6 @@ add_line "$SHELLRC" ". ~/.dotfiles/setup_cmd_prompt" "# Setup command prompt"
 add_line "$PROFILE" ". ~/.dotfiles/start_ssh_agent" "# Start ssh-agent"
 
 mkdir -p $HOME/.config/{i3,i3status,gtk-3.0}
-
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
@@ -74,3 +73,12 @@ create_symlink ".gtkrc-2.0" "$HOME/.gtkrc-2.0"
 create_symlink ".urxvt" "$HOME/.urxvt"
 create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
+
+SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
+DST_LOCK_SCREEN_IMG_PATH="$HOME/Pictures/lock_screen.png"
+SCREEN_RESOLUTION=$(xdpyinfo | awk '/dimensions/{print $2}')
+echo "Preparing lock screen image: $DST_LOCK_SCREEN_IMG_PATH"
+mkdir -p "$HOME/Pictures"
+echo "- Screen resolution: $SCREEN_RESOLUTION"
+echo "- Converting image: $SRC_LOCK_SCREEN_IMG_PATH -> $DST_LOCK_SCREEN_IMG_PATH"
+convert "$SRC_LOCK_SCREEN_IMG_PATH" -background none -gravity center -extent "$SCREEN_RESOLUTION" "$DST_LOCK_SCREEN_IMG_PATH"
