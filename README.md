@@ -1,39 +1,11 @@
-## Common configuration
-
-### Packages
-
-- Install required packages
-```sh
-sudo dnf install git compton adwaita-gtk2-theme ImageMagick pasystray
-```
-
-- Install xcape (https://github.com/alols/xcape)
-```sh
-sudo dnf install -y git gcc make pkgconfig libX11-devel libXtst-devel libXi-devel
-git clone git@github.com:alols/xcape.git
-cd xcape
-make
-sudo make install
-```
-
-- Configure RPMfusion repositories and install ffmpeg
-```sh
-sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf -y install ffmpeg
-```
-
-### General setup
+# Common configuration
 
 - Run ./setup.sh
 
-### ssh-agent
 
-- For graphical password prompt install `openssh-askpass`
+# ThinkPad laptop
 
-## ThinkPad laptop
-
-### TLP
+## TLP
 
 ```sh
 sudo dnf install tlp tlp-rdw
@@ -43,7 +15,7 @@ dnf install https://repo.linrunner.de/fedora/tlp/repos/releases/tlp-release.fc$(
 dnf install akmod-acpi_call
 ```
 
-### Fingerprint sensor on Fedora 33
+## Fingerprint sensor on Fedora 33
 
 - From directory `python-validity` install the packages
 ```sh
