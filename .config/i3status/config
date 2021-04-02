@@ -1,10 +1,9 @@
 general {
-        output_format = "i3bar"
         colors = true
         interval = 5
 }
 
-order += "ethernet enp38s0"
+order += "ethernet _first_"
 order += "memory"
 order += "disk /"
 order += "load"
@@ -12,23 +11,23 @@ order += "time"
 order += "tztime amsterdam"
 order += "volume master"
 
-ethernet enp38s0 {
+ethernet _first_ {
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
 }
 
 memory {
-        format = "%used (%percentage_used)"
+        format = "%used (%available)"
         threshold_degraded = "10%"
-        format_degraded = "MEMORY LOW: %free"
+        format_degraded = "MEMORY LOW: %available"
 }
 
 disk "/" {
-        format = "%free"
+        format = "%avail"
 }
 
 load {
-        format = "%5min"
+        format = "%1min"
 }
 
 time {
