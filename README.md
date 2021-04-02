@@ -27,6 +27,11 @@ sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-non
 sudo dnf -y install ffmpeg
 ```
 
+- Install Adwaita GTK2 themes
+```sh
+sudo dnf -y install adwaita-gtk2-theme
+```
+
 ### General setup
 
 - Run ./setup.sh

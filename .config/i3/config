@@ -13,8 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font pango:monospace 8
-font pango:Hack 10
+font pango:monospace 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -186,15 +185,16 @@ bar {
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 
 # Exit menu
-mode "exit: [l]ogout, [r]eboot, sh[u]tdown, [s]leep" {
-  bindsym l mode "default", exec i3-msg exit
+mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
+  bindsym l mode "default", exec i3lock -c 111111 -i "$HOME/Pictures/lock_screen.png"
+  bindsym o mode "default", exec i3-msg exit
+  bindsym s mode "default", exec systemctl suspend
   bindsym r mode "default", exec systemctl reboot
   bindsym u mode "default", exec systemctl poweroff
-  bindsym s mode "default", exec systemctl suspend
   bindsym Escape mode "default"
   bindsym $mod+x mode "default"
 }
-bindsym $mod+x mode "exit: [l]ogout, [r]eboot, sh[u]tdown, [s]leep"
+bindsym $mod+x mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown"
 
 # Pulseaudio System Tray applet
 for_window [class="Pavucontrol"] floating enable
