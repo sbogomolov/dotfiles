@@ -57,6 +57,11 @@ create_symlink() {
 }
 
 
+sudo_create_symlink() {
+    sudo bash -c "$(declare -f create_symlink); create_symlink "$1" "$2""
+}
+
+
 PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pavucontrol pasystray openssh-askpass)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
@@ -67,12 +72,13 @@ if [ -d "$HOME/code/xcape" ]; then
 else
     sudo dnf -y install gcc make pkgconfig libX11-devel libXtst-devel libXi-devel
     mkdir -p "$HOME/code"
+    CURRENT_DIR="$PWD"
     cd "$HOME/code"
     git clone git@github.com:alols/xcape.git
     cd xcape
     make
     sudo make install
-    cd "$HOME/.dotfiles"
+    cd "$CURRENT_DIR"
 fi
 
 echo "Installing ffmpeg"
@@ -98,6 +104,7 @@ create_symlink ".urxvt" "$HOME/.urxvt"
 create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
 create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
+sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 
 
 SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
