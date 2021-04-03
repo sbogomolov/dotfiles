@@ -185,6 +185,10 @@ bar {
         status_command i3status
 }
 
+# Floating windows
+for_window [class="Pavucontrol"] floating enable
+for_window [class="System-config-printer.py"] floating enable
+
 # Start compton
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 
@@ -201,7 +205,6 @@ mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
 bindsym $mod+x mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown"
 
 # Pulseaudio System Tray applet
-for_window [class="Pavucontrol"] floating enable
 exec --no-startup-id pasystray
 
 #

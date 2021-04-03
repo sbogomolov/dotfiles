@@ -1,6 +1,14 @@
 # Common configuration
 
+## Initial setup (installing required packages, setting up configuration files):
+
 - Run ./setup.sh
+
+## Printers
+
+To enable automatic discovery of IPP printers (https://wiki.debian.org/CUPSQuickPrintQueues?action=show&redirect=QuickPrintQueuesCUPS#IPP_Printers):
+- In `/etc/cups/cups-browsed.conf` uncomment `CreateIPPPrinterQueues All`
+- `systemctl restart cups-browsed`
 
 
 # ThinkPad laptop
