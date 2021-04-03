@@ -20,6 +20,13 @@ To enable automatic discovery of IPP printers (https://wiki.debian.org/CUPSQuick
 sudo dnf -y install xbacklight
 ```
 
+## Synaptic touchpad
+
+- Install synaptic driver (to use instead of libinput):
+```sh
+sudo dnf -y install xorg-x11-drv-synaptics-legacy
+```
+
 ## TLP
 
 ```sh
