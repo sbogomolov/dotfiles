@@ -105,6 +105,7 @@ create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
 create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
+sudo_create_symlink "xorg.conf.d/95-synaptics-overrides.conf" "/usr/share/X11/xorg.conf.d/95-synaptics-overrides.conf"
 
 
 SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
