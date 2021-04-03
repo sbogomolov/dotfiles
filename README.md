@@ -5,6 +5,13 @@
 
 # ThinkPad laptop
 
+## Backlight brightness
+
+- Install xbacklight
+```sh
+sudo dnf -y install xbacklight
+```
+
 ## TLP
 
 ```sh
