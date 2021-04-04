@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-PROFILE=~/.bash_profile
-SHELLRC=~/.bashrc
+PROFILE="$HOME/.bash_profile"
+SHELLRC="$HOME/.bashrc"
 
 
 add_line() {
@@ -62,10 +62,13 @@ sudo_create_symlink() {
 }
 
 
-PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pavucontrol pasystray openssh-askpass)
+# Install required RPM packages
+PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pavucontrol pasystray openssh-askpass fzf ripgrep)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
+
+# Install xcape
 echo "Installing xcape (https://github.com/alols/xcape)"
 if [ -d "$HOME/code/xcape" ]; then
     echo "- Directory $HOME/code/xcape already exists, assuming that xcape is installed"
@@ -81,6 +84,8 @@ else
     cd "$CURRENT_DIR"
 fi
 
+
+# Install ffmpeg
 echo "Installing ffmpeg"
 echo "- Enabling RMP fusion repositories"
 sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -89,10 +94,13 @@ echo "- Installing ffmpeg"
 sudo dnf -y install ffmpeg
 
 
-add_line "$SHELLRC" ". ~/.dotfiles/set_cmd_prompt" "# Set command prompt"
-add_line "$PROFILE" ". ~/.dotfiles/start_ssh_agent" "# Start ssh-agent"
+# Amend .bashrc and .bash_profile files
+add_line "$PROFILE" '. "$HOME/.dotfiles/start_ssh_agent"' '# Start ssh-agent'
+add_line "$SHELLRC" '. "$HOME/.dotfiles/set_cmd_prompt"' '# Set command prompt'
+add_line "$SHELLRC" '. "$HOME/.dotfiles/fzf_conf"' '# FZF mappings and options'
 
 
+# Create symlinks to config files
 mkdir -p $HOME/.config/{i3,i3status,gtk-3.0}
 mkdir -p $HOME/.config/fontconfig/conf.d
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
@@ -108,6 +116,7 @@ sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xor
 sudo_create_symlink "xorg.conf.d/95-synaptics-overrides.conf" "/usr/share/X11/xorg.conf.d/95-synaptics-overrides.conf"
 
 
+# Resize lock screen image
 SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
 DST_LOCK_SCREEN_IMG_PATH="$HOME/Pictures/lock_screen.png"
 SCREEN_RESOLUTION=$(xdpyinfo | awk '/dimensions/{print $2}')
@@ -116,3 +125,8 @@ mkdir -p "$HOME/Pictures"
 echo "- Screen resolution: $SCREEN_RESOLUTION"
 echo "- Converting image: $SRC_LOCK_SCREEN_IMG_PATH -> $DST_LOCK_SCREEN_IMG_PATH"
 convert "$SRC_LOCK_SCREEN_IMG_PATH" -background none -gravity center -extent "$SCREEN_RESOLUTION" "$DST_LOCK_SCREEN_IMG_PATH"
+
+# Install vim-plug
+echo "Installing vim-plug"
+curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
