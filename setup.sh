@@ -131,3 +131,11 @@ convert "$SRC_LOCK_SCREEN_IMG_PATH" -background none -gravity center -extent "$S
 echo "Installing vim-plug"
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Set gsettings
+echo "Setting configuration via gsettings"
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 10'
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 10'
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'

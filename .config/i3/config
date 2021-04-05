@@ -189,6 +189,7 @@ bar {
 # floating windows
 for_window [class="Pavucontrol"] floating enable
 for_window [class="System-config-printer.py"] floating enable
+for_window [class="Lxappearance"] floating enable
 
 # gnome-settings-daemon
 exec --no-startup-id /usr/libexec/gsd-xsettings
