@@ -1,11 +1,15 @@
 " Plugins
 call plug#begin()
+    Plug 'junegunn/fzf.vim'
     Plug 'preservim/nerdtree'
 call plug#end()
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
+
+" FZF
+nnoremap <C-p> :FZF<CR>
 
 " Indentation settings
 set tabstop=8
