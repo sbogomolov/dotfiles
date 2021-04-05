@@ -63,7 +63,7 @@ sudo_create_symlink() {
 
 
 # Install required RPM packages
-PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pactl pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock)
+PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pulseaudio-utils pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -95,9 +95,10 @@ sudo dnf -y install ffmpeg
 
 
 # Amend .bashrc and .bash_profile files
-add_line "$PROFILE" '. "$HOME/.dotfiles/start_ssh_agent"' '# Start ssh-agent'
-add_line "$SHELLRC" '. "$HOME/.dotfiles/set_cmd_prompt"' '# Set command prompt'
-add_line "$SHELLRC" '. "$HOME/.dotfiles/fzf_conf"' '# FZF mappings and options'
+add_line "$PROFILE" '. "$HOME/.dotfiles/.bashrc.d/start_ssh_agent"' '# Start ssh-agent'
+add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/set_cmd_prompt"' '# Set command prompt'
+add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/fzf_conf"' '# FZF mappings and options'
+add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/venv_func"' '# Create/activate Python virtual environment helper function'
 
 
 # Create symlinks to config files
