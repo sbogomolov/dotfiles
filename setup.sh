@@ -135,7 +135,7 @@ curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
 # Set gsettings
 echo "Setting configuration via gsettings"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 10'
-gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'
+gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 10'
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
