@@ -190,6 +190,9 @@ bar {
 for_window [class="Pavucontrol"] floating enable
 for_window [class="System-config-printer.py"] floating enable
 
+# gnome-settings-daemon
+exec --no-startup-id /usr/libexec/gsd-xsettings
+
 # start compton
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 

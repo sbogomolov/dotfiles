@@ -63,7 +63,7 @@ sudo_create_symlink() {
 
 
 # Install required RPM packages
-PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pulseaudio-utils pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock)
+PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pulseaudio-utils pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock gnome-settings-daemon)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
