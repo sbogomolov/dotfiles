@@ -62,8 +62,17 @@ sudo_create_symlink() {
 }
 
 
+# Enable additional repositories
+echo "Enabling additional repositories"
+echo "- Enabling RMP fusion repositories"
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+echo "- Enabling skidnik/termite copr repository"
+sudo dnf -y copr enable skidnik/termite
+
+
 # Install required RPM packages
-PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pulseaudio-utils pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock gnome-settings-daemon google-roboto-fonts google-roboto-mono-fonts google-roboto-condensed-fonts google-roboto-slab-fonts)
+PACKAGES=(adwaita-gtk2-theme compton ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol pulseaudio-utils ripgrep termite xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -85,16 +94,8 @@ else
 fi
 
 
-# Install ffmpeg
-echo "Installing ffmpeg"
-echo "- Enabling RMP fusion repositories"
-sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-echo "- Installing ffmpeg"
-sudo dnf -y install ffmpeg
-
-
 # Amend .bashrc and .bash_profile files
+add_line "$PROFILE" 'export TERMINAL=termite' '# Set terminal'
 add_line "$PROFILE" '. "$HOME/.dotfiles/.bashrc.d/start_ssh_agent"' '# Start ssh-agent'
 add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/set_cmd_prompt"' '# Set command prompt'
 add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/fzf_conf"' '# FZF mappings and options'
@@ -102,11 +103,12 @@ add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/venv_func"' '# Create/activate
 
 
 # Create symlinks to config files
-mkdir -p $HOME/.config/{i3,i3status,gtk-3.0}
+mkdir -p $HOME/.config/{i3,i3status,termite,gtk-3.0}
 mkdir -p $HOME/.config/fontconfig/conf.d
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
+create_symlink ".config/termite/config" "$HOME/.config/termite/config"
 create_symlink ".config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 create_symlink ".gtkrc-2.0" "$HOME/.gtkrc-2.0"
 create_symlink ".urxvt" "$HOME/.urxvt"
