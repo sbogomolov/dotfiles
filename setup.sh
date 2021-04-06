@@ -63,7 +63,7 @@ sudo_create_symlink() {
 
 
 # Install required RPM packages
-PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pulseaudio-utils pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock gnome-settings-daemon)
+PACKAGES=(git compton adwaita-gtk2-theme ImageMagick pulseaudio-utils pavucontrol pasystray openssh-askpass fzf ripgrep xset xrdb xss-lock gnome-settings-daemon google-roboto-fonts google-roboto-mono-fonts google-roboto-condensed-fonts google-roboto-slab-fonts)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -135,7 +135,7 @@ curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
 # Set gsettings
 echo "Setting configuration via gsettings"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 11'
-gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 10'
+gsettings set org.gnome.desktop.interface document-font-name 'Roboto 10'
+gsettings set org.gnome.desktop.interface font-name 'Roboto 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono 10'
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
