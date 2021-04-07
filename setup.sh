@@ -72,7 +72,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(adwaita-gtk2-theme compton ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol pulseaudio-utils ripgrep termite xrdb xset xss-lock)
+PACKAGES=(adwaita-gtk2-theme compton ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol playerctl pulseaudio-utils ripgrep termite xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
