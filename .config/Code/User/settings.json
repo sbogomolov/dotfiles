@@ -1,0 +1,20 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.enableExperiments": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "editor.inlineHints.fontFamily": "'Roboto Mono'",
+    "editor.fontFamily": "'Roboto Mono'",
+    "editor.renderWhitespace": "boundary",
+    "scm.inputFontSize": 13.33333333333,
+    "markdown.preview.fontSize": 13.33333333333,
+    "terminal.integrated.fontSize": 13.33333333333,
+    "terminal.integrated.lineHeight": 1.1,
+    "editor.fontSize": 13.33333333333,
+    "terminal.integrated.letterSpacing": 1
+}
