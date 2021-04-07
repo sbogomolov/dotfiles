@@ -170,7 +170,7 @@ bindsym $mod+r mode "resize"
 
 # exit menu
 mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
-  bindsym l mode "default", exec i3lock -c 111111 -i "$HOME/Pictures/lock_screen.png"
+  bindsym l mode "default", exec loginctl lock-session
   bindsym o mode "default", exec i3-msg exit
   bindsym s mode "default", exec systemctl suspend
   bindsym r mode "default", exec systemctl reboot
