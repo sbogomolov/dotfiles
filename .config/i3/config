@@ -170,8 +170,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # screenshot
-bindsym --release Print exec --no-startup-id exec "$HOME/.dotfiles/bin/screenshot.sh" -f
-bindsym --release Shift+Print exec --no-startup-id exec "$HOME/.dotfiles/bin/screenshot.sh"
+bindsym --release $mod+Control+Shift+s exec --no-startup-id exec "$HOME/.local/scripts/screenshot.sh" -f
+bindsym --release $mod+Shift+s exec --no-startup-id exec "$HOME/.local/scripts/screenshot.sh"
 
 # exit menu
 mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
@@ -191,6 +191,13 @@ bar {
         status_command i3status
 }
 
+# scratchpad
+for_window [instance="__scratchpad"] move scratchpad, border pixel 1, resize set 70 ppt 80 ppt, move position 15 ppt 10 ppt
+exec --no-startup-id i3-sensible-terminal --name __scratchpad
+bindsym $mod+Shift+i exec --no-startup-id i3-sensible-terminal --name __scratchpad
+bindsym --release $mod+Shift+i scratchpad show
+bindsym $mod+i scratchpad show
+
 # floating windows
 for_window [class="Pavucontrol"] floating enable
 for_window [class="System-config-printer.py"] floating enable
@@ -202,10 +209,10 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 # start compton
 exec --no-startup-id compton --config "$HOME/.config/compton.conf -b"
 
-# network manager system tray applet
+# NetworkManager system tray applet
 exec --no-startup-id nm-applet
 
-# Pulseaudio system tray applet
+# PulseAudio system tray applet
 exec --no-startup-id pasystray
 
 # use caps lock as control modifier

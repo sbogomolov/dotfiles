@@ -33,7 +33,7 @@ create_symlink() {
     src="$PWD/$1"
     dst="$2"
 
-    echo "Config file: $dst"
+    echo "Creating symlink: $dst"
 
     if [ -L "$dst" ]; then
         if [ "$(readlink "$dst")" = "$src" ]; then
@@ -103,9 +103,9 @@ add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/venv_func"' '# Create/activate
 
 
 # Create symlinks to config files
-mkdir -p $HOME/.config/{i3,i3status,termite,gtk-3.0}
-mkdir -p $HOME/.config/fontconfig/conf.d
-mkdir -p $HOME/.config/Code/User
+mkdir -p "$HOME/.config/{i3,i3status,termite,gtk-3.0}"
+mkdir -p "$HOME/.config/fontconfig/conf.d"
+mkdir -p "$HOME/.config/Code/User"
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
@@ -121,6 +121,11 @@ sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xor
 sudo_create_symlink "xorg.conf.d/95-synaptics-overrides.conf" "/usr/share/X11/xorg.conf.d/95-synaptics-overrides.conf"
 
 
+# Create symlinks to helper scripts
+mkdir -p "$HOME/.local/scripts"
+create_symlink "scripts/screenshot.sh" "$HOME/.local/scripts/screenshot.sh"
+
+
 # Resize lock screen image
 SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
 DST_LOCK_SCREEN_IMG_PATH="$HOME/Pictures/lock_screen.png"
@@ -131,10 +136,12 @@ echo "- Screen resolution: $SCREEN_RESOLUTION"
 echo "- Converting image: $SRC_LOCK_SCREEN_IMG_PATH -> $DST_LOCK_SCREEN_IMG_PATH"
 convert "$SRC_LOCK_SCREEN_IMG_PATH" -background none -gravity center -extent "$SCREEN_RESOLUTION" "$DST_LOCK_SCREEN_IMG_PATH"
 
+
 # Install vim-plug
 echo "Installing vim-plug"
 curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 # Set gsettings
 echo "Setting configuration via gsettings"
