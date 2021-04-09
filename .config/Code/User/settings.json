@@ -14,7 +14,6 @@
     "scm.inputFontSize": 13.33333333333,
     "markdown.preview.fontSize": 13.33333333333,
     "terminal.integrated.fontSize": 13.33333333333,
-    "terminal.integrated.lineHeight": 1.1,
     "editor.fontSize": 13.33333333333,
     "terminal.integrated.letterSpacing": 1,
     "workbench.startupEditor": "newUntitledFile"

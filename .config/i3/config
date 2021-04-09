@@ -169,6 +169,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# screenshot
+bindsym --release Print exec --no-startup-id exec "$HOME/.dotfiles/bin/screenshot.sh" -f
+bindsym --release Shift+Print exec --no-startup-id exec "$HOME/.dotfiles/bin/screenshot.sh"
+
 # exit menu
 mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
   bindsym l mode "default", exec loginctl lock-session
@@ -196,7 +200,7 @@ for_window [class="Lxappearance"] floating enable
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # start compton
-exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec --no-startup-id compton --config "$HOME/.config/compton.conf -b"
 
 # network manager system tray applet
 exec --no-startup-id nm-applet
