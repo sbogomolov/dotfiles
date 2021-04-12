@@ -202,6 +202,7 @@ bindsym $mod+i scratchpad show
 for_window [class="Pavucontrol"] floating enable
 for_window [class="System-config-printer.py"] floating enable
 for_window [class="Lxappearance"] floating enable
+for_window [title="Page Unresponsive"] floating enable
 
 # no title for browsers
 for_window [class="Chromium-browser"] border pixel 2
