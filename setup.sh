@@ -103,9 +103,10 @@ add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/venv_func"' '# Create/activate
 
 
 # Create symlinks to config files
-mkdir -p "$HOME/.config/{i3,i3status,termite,gtk-3.0}"
+mkdir -p $HOME/.config/{gtk-3.0,i3,i3status,termite}
 mkdir -p "$HOME/.config/fontconfig/conf.d"
 mkdir -p "$HOME/.config/Code/User"
+mkdir -p "$HOME/.local/share/applications"
 create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
@@ -117,6 +118,7 @@ create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
 create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
 create_symlink ".config/Code/User/settings.json" "$HOME/.config/Code/User/settings.json"
+create_symlink ".local/share/applications/chromium-browser.desktop" "$HOME/.local/share/applications/chromium-browser.desktop"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 sudo_create_symlink "xorg.conf.d/95-synaptics-overrides.conf" "/usr/share/X11/xorg.conf.d/95-synaptics-overrides.conf"
 

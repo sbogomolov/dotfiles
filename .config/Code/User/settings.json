@@ -16,5 +16,7 @@
     "terminal.integrated.fontSize": 13.33333333333,
     "editor.fontSize": 13.33333333333,
     "terminal.integrated.letterSpacing": 1,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.suggestSelection": "first"
 }
