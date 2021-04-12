@@ -72,7 +72,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(adwaita-gtk2-theme compton ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol playerctl pulseaudio-utils ripgrep termite xclip xrdb xset xss-lock)
+PACKAGES=(adwaita-gtk2-theme chromium-freeworld compton ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol playerctl pulseaudio-utils ripgrep termite xclip xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -118,7 +118,8 @@ create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
 create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
 create_symlink ".config/Code/User/settings.json" "$HOME/.config/Code/User/settings.json"
-create_symlink ".local/share/applications/chromium-browser.desktop" "$HOME/.local/share/applications/chromium-browser.desktop"
+create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.local/share/applications/chromium-freeworld.desktop"
+create_symlink ".config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 sudo_create_symlink "xorg.conf.d/95-synaptics-overrides.conf" "/usr/share/X11/xorg.conf.d/95-synaptics-overrides.conf"
 

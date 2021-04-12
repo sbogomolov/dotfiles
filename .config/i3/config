@@ -203,9 +203,13 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="System-config-printer.py"] floating enable
 for_window [class="Lxappearance"] floating enable
 
-# no title for browser
+# no title for browsers
 for_window [class="Chromium-browser"] border pixel 2
+for_window [class="Chromium-freeworld"] border pixel 2
 for_window [class="Firefox"] border pixel 2
+
+# move incoming slack call window to the current workspace
+for_window [class="Slack" floating] move container to workspace current
 
 # gnome-settings-daemon
 exec --no-startup-id /usr/libexec/gsd-xsettings
