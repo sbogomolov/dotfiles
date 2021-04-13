@@ -216,8 +216,8 @@ for_window [class="Slack" floating] move container to workspace current
 # gnome-settings-daemon
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
-# start compton
-exec --no-startup-id compton --config "$HOME/.config/compton.conf" -b"
+# start picom
+exec --no-startup-id picom -b
 
 # NetworkManager system tray applet
 exec --no-startup-id nm-applet

@@ -72,7 +72,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(adwaita-gtk2-theme chromium-freeworld compton ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol playerctl pulseaudio-utils ripgrep termite xclip xrdb xset xss-lock)
+PACKAGES=(adwaita-gtk2-theme chromium-freeworld ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts ImageMagick openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ripgrep termite xclip xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -107,7 +107,7 @@ mkdir -p $HOME/.config/{gtk-3.0,i3,i3status,termite}
 mkdir -p "$HOME/.config/fontconfig/conf.d"
 mkdir -p "$HOME/.config/Code/User"
 mkdir -p "$HOME/.local/share/applications"
-create_symlink ".config/compton.conf" "$HOME/.config/compton.conf"
+create_symlink ".config/picom.conf" "$HOME/.config/picom.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
 create_symlink ".config/termite/config" "$HOME/.config/termite/config"
