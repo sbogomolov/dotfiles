@@ -42,6 +42,7 @@ disk "/" {
 
 load {
         format = "%1min"
+        max_threshold = 24
 }
 
 time {
