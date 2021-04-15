@@ -64,3 +64,67 @@ More information here:
 - https://github.com/uunicorn/python-validity
 - https://github.com/uunicorn/python-validity/issues/54
 - https://wiki.archlinux.org/index.php/Fprint#Login_configuration
+
+
+## Hibernation to swapfile on btrfs
+
+- Prepare swapfile:
+```sh
+sudo truncate -s 0 /swapfile
+sudo chattr +C /swapfile
+sudo btrfs property set /swapfile compression none
+sudo dd if=/dev/zero of=/swapfile bs=1M count=30720 status=progress
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+```
+- Enable swap file
+```sh
+sudo swapon /swapfile
+```
+- To enable it on boot, add this line to /etc/fstab
+```
+/swapfile                                 none                    swap    defaults        0 0
+```
+- Download https://github.com/osandov/osandov-linux/blob/master/scripts/btrfs_map_physical.c
+- Build it
+```sh
+gcc -O2 -o btrfs_map_physical btrfs_map_physical.c
+```
+- Find out physical offset to the swap file (first row, last column is the number we need)
+```sh
+sudo ./btrfs_map_physical /swapfile | head
+```
+- Divide that number by page size. To find page size:
+```sh
+getconf PAGESIZE
+```
+- Add `resume` module to initramfs
+```sh
+sudo sh -c 'echo "add_dracutmodules+=\" resume \"" > /etc/dracut.conf.d/resume.conf'
+sudo dracut -f
+```
+- Add kernel parameters in `/etc/default/grub` (use the correct UUID of the device where swapfile is created and offset computed in the previous steps)
+```
+resume=UUID=6d1e4046-9258-4be3-9d08-b52653272aad resume_offset=1796570
+```
+- Update grub config
+```sh
+sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+```
+- Disable hibernation memory check for `systemd-hibernate` and `systemd-logind`. Edit the overrides for these services and insert there following:
+```
+[Service]
+Environment=SYSTEMD_BYPASS_HIBERNATION_MEMORY_CHECK=1
+```
+```sh
+sudo systemctl edit systemd-hibernate
+# Insert text, save and exit
+
+sudo systemctl edit systemd-logind
+# Insert text, save and exit
+```
+- Reboot
+
+More information here:
+- https://wiki.archlinux.org/index.php/Btrfs#Swap_file
+- https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file_on_Btrfs
