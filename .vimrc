@@ -15,6 +15,9 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>w :Windows<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 
+" Syntax highlighting
+syntax on
+
 " Indentation settings
 set tabstop=8
 set softtabstop=0
