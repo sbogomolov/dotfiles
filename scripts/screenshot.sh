@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-file_path="$HOME/screenshot_$(date +"%Y%m%d_%H%M%S").png"
+file_path="$(xdg-user-dir PICTURES)/screenshot_$(date +"%Y%m%d_%H%M%S").png"
 import_params=""
 
 if [ "$#" -gt 0 ] && [ "$1" = "-f" ]; then

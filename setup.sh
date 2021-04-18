@@ -72,7 +72,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ripgrep termite xclip xrdb xset xss-lock)
+PACKAGES=(ImageMagick adwaita-gtk2-theme chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ripgrep termite xclip xdg-user-dirs xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -130,11 +130,12 @@ create_symlink "scripts/screenshot.sh" "$HOME/.local/scripts/screenshot.sh"
 
 
 # Resize lock screen image
-SRC_LOCK_SCREEN_IMG_PATH="$HOME/.dotfiles/img/lock_screen.png"
-DST_LOCK_SCREEN_IMG_PATH="$HOME/Pictures/lock_screen.png"
+PICTURES_DIR="$(xdg-user-dir PICTURES)"
+SRC_LOCK_SCREEN_IMG_PATH="img/lock_screen.png"
+DST_LOCK_SCREEN_IMG_PATH="$PICTURES_DIR/lock_screen.png"
 SCREEN_RESOLUTION=$(xdpyinfo | awk '/dimensions/{print $2}')
 echo "Preparing lock screen image: $DST_LOCK_SCREEN_IMG_PATH"
-mkdir -p "$HOME/Pictures"
+mkdir -p "$PICTURES_DIR"
 echo "- Screen resolution: $SCREEN_RESOLUTION"
 echo "- Converting image: $SRC_LOCK_SCREEN_IMG_PATH -> $DST_LOCK_SCREEN_IMG_PATH"
 convert "$SRC_LOCK_SCREEN_IMG_PATH" -background none -gravity center -extent "$SCREEN_RESOLUTION" "$DST_LOCK_SCREEN_IMG_PATH"
