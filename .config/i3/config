@@ -191,9 +191,9 @@ bar {
 # scratchpad
 for_window [instance="__scratchpad"] move scratchpad, border pixel 1, resize set 70 ppt 80 ppt, move position 15 ppt 10 ppt
 exec --no-startup-id i3-sensible-terminal --name __scratchpad
-bindsym $mod+Shift+grave exec --no-startup-id i3-sensible-terminal --name __scratchpad
-bindsym --release $mod+Shift+grave scratchpad show
-bindsym $mod+grave scratchpad show
+bindsym $mod+Shift+i exec --no-startup-id i3-sensible-terminal --name __scratchpad
+bindsym --release $mod+Shift+i scratchpad show
+bindsym $mod+i scratchpad show
 
 # floating windows
 for_window [class="Pavucontrol"] floating enable
