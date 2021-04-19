@@ -72,7 +72,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ripgrep termite xclip xdg-user-dirs xrdb xset xss-lock)
+PACKAGES=(ImageMagick adwaita-gtk2-theme chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ranger ripgrep termite w3m-img xclip xdg-user-dirs xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -103,7 +103,7 @@ add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/venv_func"' '# Create/activate
 
 
 # Create symlinks to config files
-mkdir -p $HOME/.config/{gtk-3.0,i3,i3status,termite}
+mkdir -p $HOME/.config/{gtk-3.0,i3,i3status,ranger,termite}
 mkdir -p "$HOME/.config/fontconfig/conf.d"
 mkdir -p "$HOME/.config/Code/User"
 mkdir -p "$HOME/.local/share/applications"
@@ -121,6 +121,7 @@ create_symlink ".config/Code/User/settings.json" "$HOME/.config/Code/User/settin
 create_symlink ".config/Code/User/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
 create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.local/share/applications/chromium-freeworld.desktop"
 create_symlink ".config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
+create_symlink ".config/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 
 
