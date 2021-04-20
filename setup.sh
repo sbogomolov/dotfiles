@@ -64,7 +64,7 @@ sudo_create_symlink() {
 
 # Enable additional repositories
 echo "Enabling additional repositories"
-echo "- Enabling RMP fusion repositories"
+echo "- Enabling RMP Fusion repositories"
 sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 echo "- Enabling skidnik/termite copr repository"
@@ -72,7 +72,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme blueman-applet chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ranger ripgrep termite w3m-img xclip xdg-user-dirs xrdb xset xss-lock)
+PACKAGES=(ImageMagick adwaita-gtk2-theme blueman chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ranger ripgrep termite w3m-img xclip xdg-user-dirs xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
