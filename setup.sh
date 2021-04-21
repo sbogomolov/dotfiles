@@ -52,6 +52,12 @@ create_symlink() {
         mv "$dst" "$dst.old"
     fi
 
+    dst_dir="$(dirname "$dst")"
+    if [ ! -d "$dst_dir" ]; then
+        echo "- Creating directory: $dst_dir"
+        mkdir -p "$dst_dir"
+    fi
+
     echo "- Creating symlink: $dst -> $src"
     ln -s "$src" "$dst"
 }
@@ -96,17 +102,13 @@ fi
 
 # Amend .bashrc and .bash_profile files
 add_line "$PROFILE" 'export TERMINAL=termite' '# Set terminal'
-add_line "$PROFILE" '. "$HOME/.dotfiles/.bashrc.d/start_ssh_agent"' '# Start ssh-agent'
-add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/set_cmd_prompt"' '# Set command prompt'
-add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/fzf_conf"' '# FZF mappings and options'
-add_line "$SHELLRC" '. "$HOME/.dotfiles/.bashrc.d/venv_func"' '# Create/activate Python virtual environment helper function'
+add_line "$PROFILE" ". \"$PWD/.bashrc.d/start_ssh_agent\"" '# Start ssh-agent'
+add_line "$SHELLRC" ". \"$PWD/.bashrc.d/set_cmd_prompt\"" '# Set command prompt'
+add_line "$SHELLRC" ". \"$PWD/.bashrc.d/fzf_conf\"" '# FZF mappings and options'
+add_line "$SHELLRC" ". \"$PWD/.bashrc.d/venv_func\"" '# Create/activate Python virtual environment helper function'
 
 
 # Create symlinks to config files
-mkdir -p $HOME/.config/{gtk-3.0,i3,i3status,ranger,termite}
-mkdir -p "$HOME/.config/fontconfig/conf.d"
-mkdir -p "$HOME/.config/Code/User"
-mkdir -p "$HOME/.local/share/applications"
 create_symlink ".config/picom.conf" "$HOME/.config/picom.conf"
 create_symlink ".config/i3/config" "$HOME/.config/i3/config"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
@@ -122,6 +124,7 @@ create_symlink ".config/Code/User/keybindings.json" "$HOME/.config/Code/User/key
 create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.local/share/applications/chromium-freeworld.desktop"
 create_symlink ".config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 create_symlink ".config/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
+create_symlink ".config/mpv/mpv.conf" "$HOME/.config/mpv/mpv.conf"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 
 
