@@ -201,6 +201,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="System-config-printer.py"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [title="Page Unresponsive"] floating enable
+for_window [class="zoom"] floating enable
 
 # no title for browsers
 for_window [class="Chromium-browser"] border pixel 2
