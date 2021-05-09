@@ -78,7 +78,7 @@ sudo dnf -y copr enable skidnik/termite
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme blueman chromium-freeworld dmenu dunst feh ffmpeg fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock mpv network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ranger ripgrep termite w3m-img xclip xdg-user-dirs xrdb xset xss-lock)
+PACKAGES=(ImageMagick adwaita-gtk2-theme blueman chromium-freeworld dmenu dunst feh ffmpeg fira-code-fonts fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock mpv network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ranger ripgrep termite w3m-img xclip xdg-user-dirs xrdb xset xss-lock)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -156,5 +156,5 @@ echo "Setting configuration via gsettings"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface document-font-name 'Roboto 10'
 gsettings set org.gnome.desktop.interface font-name 'Roboto 10'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Roboto Mono 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 10'
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'

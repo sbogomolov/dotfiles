@@ -8,16 +8,20 @@
             "filenamePattern": "*.ipynb"
         }
     ],
-    "editor.inlineHints.fontFamily": "'Roboto Mono'",
-    "editor.fontFamily": "'Roboto Mono'",
     "editor.renderWhitespace": "boundary",
+    "editor.inlineHints.fontFamily": "'Fira Code', 'Source Code Pro', 'Roboto Mono'",
+    "editor.fontFamily": "'Fira Code', 'Source Code Pro', 'Roboto Mono'",
+    "editor.fontSize": 13.33333333333,
     "scm.inputFontSize": 13.33333333333,
     "markdown.preview.fontSize": 13.33333333333,
     "terminal.integrated.fontSize": 13.33333333333,
-    "editor.fontSize": 13.33333333333,
-    "terminal.integrated.letterSpacing": 1,
     "workbench.startupEditor": "newUntitledFile",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.suggestSelection": "first",
-    "gitlens.defaultTimeFormat": "HH:mm"
+    "gitlens.defaultTimeFormat": "HH:mm",
+    "python.languageServer": "Pylance",
+    "cSpell.userWords": [
+        "Bogomolov",
+        "Sergii"
+    ]
 }
