@@ -73,49 +73,49 @@ echo "Enabling additional repositories"
 echo "- Enabling RMP Fusion repositories"
 sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-echo "- Enabling skidnik/termite copr repository"
-sudo dnf -y copr enable skidnik/termite
+echo "- Enabling fszymanski/interception-tools copr repository"
+sudo dnf -y copr enable fszymanski/interception-tools
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme blueman chromium-freeworld dmenu dunst feh ffmpeg fira-code-fonts fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3 i3status i3lock mpv network-manager-applet openssh-askpass pasystray pavucontrol picom playerctl pulseaudio-utils ranger ripgrep termite w3m-img xclip xdg-user-dirs xrdb xset xss-lock)
+PACKAGES=(ImageMagick adwaita-gtk2-theme chromium-freeworld feh ffmpeg fira-code-fonts foot fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3status interception-tools mpv openssh-askpass pavucontrol playerctl pulseaudio-utils ranger ripgrep w3m-img xdg-user-dirs xrdb)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
 
-# Install xcape
-echo "Installing xcape (https://github.com/alols/xcape)"
-if [ -d "$HOME/code/xcape" ]; then
-    echo "- Directory $HOME/code/xcape already exists, assuming that xcape is installed"
+# Install caps2esc
+echo "Installing caps2esc (https://gitlab.com/interception/linux/plugins/caps2esc)"
+if [ -d "$HOME/code/caps2esc" ]; then
+    echo "- Directory $HOME/code/caps2esc already exists, assuming that caps2esc is installed"
 else
-    sudo dnf -y install gcc make pkgconfig libX11-devel libXtst-devel libXi-devel
+    sudo dnf -y install gcc make cmake
     mkdir -p "$HOME/code"
     CURRENT_DIR="$PWD"
     cd "$HOME/code"
-    git clone git@github.com:alols/xcape.git
-    cd xcape
-    make
-    sudo make install
+    git clone git@gitlab.com:interception/linux/plugins/caps2esc.git
+    cd caps2esc
+    cmake -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+    sudo cmake --install build
     cd "$CURRENT_DIR"
 fi
 
 
 # Amend .bashrc and .bash_profile files
-add_line "$PROFILE" 'export TERMINAL=termite' '# Set terminal'
+add_line "$PROFILE" 'export TERMINAL=foot' '# Set terminal'
 add_line "$PROFILE" ". \"$PWD/.bashrc.d/start_ssh_agent\"" '# Start ssh-agent'
 add_line "$SHELLRC" ". \"$PWD/.bashrc.d/set_cmd_prompt\"" '# Set command prompt'
 add_line "$SHELLRC" ". \"$PWD/.bashrc.d/fzf_conf\"" '# FZF mappings and options'
 add_line "$SHELLRC" ". \"$PWD/.bashrc.d/venv_func\"" '# Create/activate Python virtual environment helper function'
 
 
-# Create symlinks to config files
-create_symlink ".config/picom.conf" "$HOME/.config/picom.conf"
-create_symlink ".config/i3/config" "$HOME/.config/i3/config"
+# Create symlinks
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
-create_symlink ".config/termite/config" "$HOME/.config/termite/config"
+create_symlink ".config/sway/config" "$HOME/.config/sway/config"
+create_symlink ".config/foot/foot.ini" "$HOME/.config/foot/foot.ini"
+create_symlink ".config/mako/config" "$HOME/.config/mako/config"
 create_symlink ".config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 create_symlink ".gtkrc-2.0" "$HOME/.gtkrc-2.0"
-create_symlink ".urxvt" "$HOME/.urxvt"
 create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
 create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
@@ -125,12 +125,10 @@ create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.lo
 create_symlink ".config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 create_symlink ".config/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
 create_symlink ".config/mpv/mpv.conf" "$HOME/.config/mpv/mpv.conf"
+create_symlink ".local/bin/j4-footclient" "$HOME/.local/bin/j4-footclient"
+create_symlink ".local/bin/code" "$HOME/.local/bin/code"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
-
-
-# Create symlinks to helper scripts
-mkdir -p "$HOME/.local/scripts"
-create_symlink "scripts/screenshot.sh" "$HOME/.local/scripts/screenshot.sh"
+sudo_create_symlink "udevmon.d/caps2esc.yaml" "/etc/interception/udevmon.d/caps2esc.yaml"
 
 
 # Resize lock screen image

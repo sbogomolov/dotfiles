@@ -22,6 +22,8 @@
     "python.languageServer": "Pylance",
     "cSpell.userWords": [
         "Bogomolov",
+        "Kubernetes",
         "Sergii"
-    ]
+    ],
+    "workbench.editor.untitled.hint": "hidden"
 }

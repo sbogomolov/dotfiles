@@ -4,7 +4,7 @@ parse_git_branch() {
 
 PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\]\n$ "
 case $TERM in
-    xterm*|rxvt*)
+    xterm*|rxvt*|foot)
         PS1="\[\033]0;\u@\h: \w\007\]$PS1"
         ;;
     *)
