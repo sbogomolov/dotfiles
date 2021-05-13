@@ -26,10 +26,10 @@ set $menu j4-dmenu-desktop --dmenu='bemenu -i' --term="j4-footclient" | xargs sw
 set $swaylock swaylock -f -c 111111 -i "$HOME/Pictures/lock_screen.png"
 
 ### Font
-font pango:Fira Code 9
+font pango:Fira Code 10
 
 ### Title bar padding
-# exec swaymsg titlebar_padding 5 2
+exec swaymsg titlebar_padding 5 3
 
 ### Output configuration
 #
