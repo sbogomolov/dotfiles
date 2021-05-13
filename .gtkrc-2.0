@@ -4,7 +4,7 @@
 include "/home/sergii/.gtkrc-2.0.mine"
 gtk-theme-name="Adwaita-dark"
 gtk-icon-theme-name="Adwaita"
-gtk-font-name="Roboto 10"
+gtk-font-name="sans-serif 10"
 gtk-cursor-theme-name="Adwaita"
 gtk-xft-antialias=1
 gtk-xft-hinting=1

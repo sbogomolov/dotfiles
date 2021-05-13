@@ -112,6 +112,7 @@ add_line "$SHELLRC" ". \"$PWD/.bashrc.d/venv_func\"" '# Create/activate Python v
 # Create symlinks
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
 create_symlink ".config/sway/config" "$HOME/.config/sway/config"
+create_symlink ".config/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
 create_symlink ".config/foot/foot.ini" "$HOME/.config/foot/foot.ini"
 create_symlink ".config/mako/config" "$HOME/.config/mako/config"
 create_symlink ".config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
@@ -119,6 +120,12 @@ create_symlink ".gtkrc-2.0" "$HOME/.gtkrc-2.0"
 create_symlink ".vimrc" "$HOME/.vimrc"
 create_symlink ".Xresources" "$HOME/.Xresources"
 create_symlink ".config/fontconfig/conf.d/99-improved-rendering.conf" "$HOME/.config/fontconfig/conf.d/99-improved-rendering.conf"
+create_symlink ".config/fontconfig/conf.d/10-default-monospace-font.conf" "$HOME/.config/fontconfig/conf.d/10-default-monospace-font.conf"
+create_symlink ".config/fontconfig/conf.d/10-default-sans-serif-font.conf" "$HOME/.config/fontconfig/conf.d/10-default-sans-serif-font.conf"
+create_symlink ".config/fontconfig/conf.d/10-default-serif-font.conf" "$HOME/.config/fontconfig/conf.d/10-default-serif-font.conf"
+create_symlink ".config/fontconfig/conf.d/20-fallback-monospace-fonts.conf" "$HOME/.config/fontconfig/conf.d/20-fallback-monospace-fonts.conf"
+create_symlink ".config/fontconfig/conf.d/20-fallback-sans-serif-fonts.conf" "$HOME/.config/fontconfig/conf.d/20-fallback-sans-serif-fonts.conf"
+create_symlink ".config/fontconfig/conf.d/20-fallback-serif-fonts.conf" "$HOME/.config/fontconfig/conf.d/20-fallback-serif-fonts.conf"
 create_symlink ".config/Code/User/settings.json" "$HOME/.config/Code/User/settings.json"
 create_symlink ".config/Code/User/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
 create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.local/share/applications/chromium-freeworld.desktop"
@@ -156,7 +163,7 @@ curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
 # Set gsettings
 echo "Setting configuration via gsettings"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-gsettings set org.gnome.desktop.interface document-font-name 'Roboto 10'
-gsettings set org.gnome.desktop.interface font-name 'Roboto 10'
-gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Code 10'
+gsettings set org.gnome.desktop.interface document-font-name 'sans-serif 10'
+gsettings set org.gnome.desktop.interface font-name 'sans-serif 10'
+gsettings set org.gnome.desktop.interface monospace-font-name 'monospace 10'
 gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'

@@ -9,8 +9,8 @@
         }
     ],
     "editor.renderWhitespace": "boundary",
-    "editor.inlineHints.fontFamily": "'Fira Code', 'Source Code Pro', 'Roboto Mono'",
-    "editor.fontFamily": "'Fira Code', 'Source Code Pro', 'Roboto Mono'",
+    "editor.inlineHints.fontFamily": "'monospace'",
+    "editor.fontFamily": "'monospace'",
     "editor.fontSize": 13.33333333333,
     "scm.inputFontSize": 13.33333333333,
     "markdown.preview.fontSize": 13.33333333333,
