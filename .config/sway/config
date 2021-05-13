@@ -29,7 +29,7 @@ set $swaylock swaylock -f -c 111111 -i "$HOME/Pictures/lock_screen.png"
 font pango:Fira Code 10
 
 ### Title bar padding
-exec swaymsg titlebar_padding 5 3
+exec_always swaymsg titlebar_padding 5 3
 
 ### Output configuration
 #
