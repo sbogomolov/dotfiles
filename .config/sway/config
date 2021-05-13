@@ -20,7 +20,7 @@ set $term footclient
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $menu bemenu-run | xargs swaymsg exec --
-set $menu j4-dmenu-desktop --dmenu='bemenu -i' --term="j4-footclient" | xargs swaymsg exec --
+set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "monospace 10"' --term="j4-footclient" | xargs swaymsg exec --
 
 # Screen lock command
 set $swaylock swaylock -f -c 111111 -i "$HOME/Pictures/lock_screen.png"
