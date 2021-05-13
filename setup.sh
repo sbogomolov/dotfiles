@@ -78,7 +78,7 @@ sudo dnf -y copr enable fszymanski/interception-tools
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme chromium-freeworld feh ffmpeg fira-code-fonts foot fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts i3status interception-tools mpv openssh-askpass pavucontrol playerctl pulseaudio-utils ranger ripgrep w3m-img xdg-user-dirs xrdb)
+PACKAGES=(ImageMagick adwaita-gtk2-theme bemenu chromium-freeworld feh ffmpeg fira-code-fonts foot fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts grim i3status interception-tools j4-dmenu-desktop jq mako mpv openssh-askpass pavucontrol playerctl pulseaudio-utils ranger ripgrep slurp sway swaybg swayidle swaylock w3m-img xdg-user-dirs wl-clipboard xrdb)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
