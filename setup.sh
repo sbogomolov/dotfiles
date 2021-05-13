@@ -131,6 +131,10 @@ sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xor
 sudo_create_symlink "udevmon.d/caps2esc.yaml" "/etc/interception/udevmon.d/caps2esc.yaml"
 
 
+# Enable and start udevmon service
+sudo systemctl enable --now udevmon
+
+
 # Resize lock screen image
 PICTURES_DIR="$(xdg-user-dir PICTURES)"
 SRC_LOCK_SCREEN_IMG_PATH="img/lock_screen.png"
