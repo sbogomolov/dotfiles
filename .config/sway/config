@@ -26,7 +26,7 @@ set $menu j4-dmenu-desktop --dmenu='bemenu -i --fn "monospace 10"' --term="j4-fo
 set $swaylock swaylock -f -c 111111 -i "$HOME/Pictures/lock_screen.png"
 
 ### Font
-font pango:monospace 10
+font pango:monospace 9.7
 
 ### Title bar padding
 exec_always swaymsg titlebar_padding 5 3
@@ -255,8 +255,7 @@ bindsym $mod+x mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown"
 #
 # No title for browsers
 #
-for_window [app_id="Chromium-browser"] border pixel 2
-for_window [app_id="Chromium-freeworld"] border pixel 2
+for_window [app_id="Chromium.*"] border pixel 2
 for_window [app_id="firefox"] border pixel 2
 
 #
@@ -268,7 +267,8 @@ for_window [app_id="system-config-printer"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable, border none
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, border none
-# for_window [title="Page Unresponsive"] floating enable
+for_window [app_id="chromium.*" title="Save File"] floating enable
+for_window [app_id="chromiun.*" title="Page Unresponsive"] floating enable
 
 ### Move incoming slack call window to the current workspace
 for_window [class="Slack" floating] move container to workspace current
@@ -277,8 +277,7 @@ for_window [class="Slack" floating] move container to workspace current
 for_window [title="meet.google.com is sharing your screen."] border none
 
 ### Inhibit idle
-for_window [app_id="Chromium-browser"] inhibit_idle fullscreen
-for_window [app_id="Chromium-freeworld"] inhibit_idle fullscreen
+for_window [app_id="Chromium.*"] inhibit_idle fullscreen
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [class="Slack"] inhibit_idle fullscreen
 for_window [class="zoom"] inhibit_idle visible
