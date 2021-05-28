@@ -78,7 +78,7 @@ sudo dnf -y copr enable fszymanski/interception-tools
 
 
 # Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme bemenu chromium-freeworld feh ffmpeg fira-code-fonts foot fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts grim i3status interception-tools j4-dmenu-desktop jq mako mpv openssh-askpass pavucontrol playerctl pulseaudio-utils ranger ripgrep slurp sway swaybg swayidle swaylock w3m-img xdg-user-dirs wl-clipboard xrdb)
+PACKAGES=(ImageMagick adwaita-gtk2-theme bemenu chromium-freeworld feh ffmpeg fira-code-fonts foot fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts grim i3status interception-tools j4-dmenu-desktop jq lightdm lightdm-gtk mako mpv openssh-askpass pavucontrol playerctl pulseaudio-utils ranger ripgrep slurp sway swaybg swayidle swaylock w3m-img xdg-user-dirs wl-clipboard xrdb)
 echo "Installing packages: ${PACKAGES[@]}"
 sudo dnf -y install "${PACKAGES[@]}"
 
@@ -136,6 +136,7 @@ create_symlink ".local/bin/j4-footclient" "$HOME/.local/bin/j4-footclient"
 create_symlink ".local/bin/code" "$HOME/.local/bin/code"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 sudo_create_symlink "udevmon.d/caps2esc.yaml" "/etc/interception/udevmon.d/caps2esc.yaml"
+sudo_create_symlink "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
 
 
 # Enable and start udevmon service
