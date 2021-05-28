@@ -68,6 +68,34 @@ sudo_create_symlink() {
 }
 
 
+copy() {
+    src="$PWD/$1"
+    dst="$2"
+
+    echo "Copying: $dst"
+
+    if [ -e "$dst" ]; then
+        echo "- File or directory already exists"
+        echo "- Backing up: $dst -> $dst.old"
+        mv "$dst" "$dst.old"
+    fi
+
+    dst_dir="$(dirname "$dst")"
+    if [ ! -d "$dst_dir" ]; then
+        echo "- Creating directory: $dst_dir"
+        mkdir -p "$dst_dir"
+    fi
+
+    echo "- Copying: $src -> $dst"
+    cp -R "$src" "$dst"
+}
+
+
+sudo_copy() {
+    sudo bash -c "$(declare -f copy); copy "$1" "$2""
+}
+
+
 # Enable additional repositories
 echo "Enabling additional repositories"
 echo "- Enabling RMP Fusion repositories"
@@ -136,7 +164,7 @@ create_symlink ".local/bin/j4-footclient" "$HOME/.local/bin/j4-footclient"
 create_symlink ".local/bin/code" "$HOME/.local/bin/code"
 sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 sudo_create_symlink "udevmon.d/caps2esc.yaml" "/etc/interception/udevmon.d/caps2esc.yaml"
-sudo_create_symlink "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
+sudo_copy "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
 
 
 # Enable and start udevmon service
