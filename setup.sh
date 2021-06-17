@@ -96,45 +96,12 @@ sudo_copy() {
 }
 
 
-# Enable additional repositories
-echo "Enabling additional repositories"
-echo "- Enabling RMP Fusion repositories"
-sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-echo "- Enabling fszymanski/interception-tools copr repository"
-sudo dnf -y copr enable fszymanski/interception-tools
-
-
-# Install required RPM packages
-PACKAGES=(ImageMagick adwaita-gtk2-theme bemenu chromium-freeworld feh ffmpeg fira-code-fonts foot fzf git gnome-settings-daemon google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts google-roboto-slab-fonts grim i3status interception-tools j4-dmenu-desktop jq lightdm lightdm-gtk mako mpv openssh-askpass pavucontrol playerctl pulseaudio-utils ranger ripgrep slurp sway swaybg swayidle swaylock w3m-img xdg-user-dirs wl-clipboard xrdb)
-echo "Installing packages: ${PACKAGES[@]}"
-sudo dnf -y install "${PACKAGES[@]}"
-
-
-# Install caps2esc
-echo "Installing caps2esc (https://gitlab.com/interception/linux/plugins/caps2esc)"
-if [ -d "$HOME/code/caps2esc" ]; then
-    echo "- Directory $HOME/code/caps2esc already exists, assuming that caps2esc is installed"
-else
-    sudo dnf -y install gcc make cmake
-    mkdir -p "$HOME/code"
-    CURRENT_DIR="$PWD"
-    cd "$HOME/code"
-    git clone git@gitlab.com:interception/linux/plugins/caps2esc.git
-    cd caps2esc
-    cmake -B build -DCMAKE_BUILD_TYPE=Release
-    cmake --build build
-    sudo cmake --install build
-    cd "$CURRENT_DIR"
-fi
-
-
 # Amend .bashrc and .bash_profile files
 add_line "$PROFILE" 'export TERMINAL=foot' '# Set terminal'
-add_line "$PROFILE" ". \"$PWD/.bashrc.d/start_ssh_agent\"" '# Start ssh-agent'
 add_line "$SHELLRC" ". \"$PWD/.bashrc.d/set_cmd_prompt\"" '# Set command prompt'
 add_line "$SHELLRC" ". \"$PWD/.bashrc.d/fzf_conf\"" '# FZF mappings and options'
-add_line "$SHELLRC" ". \"$PWD/.bashrc.d/venv_func\"" '# Create/activate Python virtual environment helper function'
+add_line "$PROFILE" 'export PATH="$HOME/.local/bin:$PATH"' '# Add .local/bin to PATH'
+# add_line "$SHELLRC" ". \"$PWD/.bashrc.d/venv_func\"" '# Create/activate Python virtual environment helper function'
 
 
 # Create symlinks
@@ -156,19 +123,14 @@ create_symlink ".config/fontconfig/conf.d/20-fallback-sans-serif-fonts.conf" "$H
 create_symlink ".config/fontconfig/conf.d/20-fallback-serif-fonts.conf" "$HOME/.config/fontconfig/conf.d/20-fallback-serif-fonts.conf"
 create_symlink ".config/Code/User/settings.json" "$HOME/.config/Code/User/settings.json"
 create_symlink ".config/Code/User/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
-create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.local/share/applications/chromium-freeworld.desktop"
+# create_symlink ".local/share/applications/chromium-freeworld.desktop" "$HOME/.local/share/applications/chromium-freeworld.desktop"
 create_symlink ".config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 create_symlink ".config/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
 create_symlink ".config/mpv/mpv.conf" "$HOME/.config/mpv/mpv.conf"
 create_symlink ".local/bin/j4-footclient" "$HOME/.local/bin/j4-footclient"
 create_symlink ".local/bin/code" "$HOME/.local/bin/code"
-sudo_create_symlink "xorg.conf.d/95-libinput-overrides.conf" "/usr/share/X11/xorg.conf.d/95-libinput-overrides.conf"
 sudo_create_symlink "udevmon.d/caps2esc.yaml" "/etc/interception/udevmon.d/caps2esc.yaml"
-sudo_copy "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
-
-
-# Enable and start udevmon service
-sudo systemctl enable --now udevmon
+# sudo_copy "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
 
 
 # Resize lock screen image

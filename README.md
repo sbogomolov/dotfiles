@@ -1,8 +1,37 @@
 # Common configuration
 
-## Initial setup (installing required packages, setting up configuration files):
+## Install packages:
+
+```sh
+sudo xbps-install -Sy ImageMagick bash-completion bemenu btrfs-progsr chrony cmake cronie curl firefox font-firacode foot fzf gcc git gnome-ssh-askpass gnome-themes-extra google-fonts-ttf gsettings-desktop-schemas htop i3status iwd j4-dmenu-desktop kwayland make mako mesa-dri mpv qt5-wayland ranger seatd socklog-void sway vim void-repo-nonfree vulkan-loader wl-clipboard xdg-user-dirs xdpyinfo yaml-cpp
+```
+
+### Intel CPU and/or Graphics
+
+```sh
+sudo xbps-install -Sy intel-ucode
+sudo xbps-reconfigure -fa
+```
+
+### Intel Graphics
+
+```sh
+sudo xbps-install -Sy intel-video-accel libvdpau-va-gl mesa-vulkan-intel
+```
+
+### Extra packages for the laptop:
+
+```sh
+sudo xbps-install -Sy iwd light tlp
+```
+
+## Setting up configuration files:
 
 - Run ./setup.sh
+
+## Hardware acceleration
+
+- https://wiki.archlinux.org/title/Hardware_video_acceleration
 
 ## Printers
 
@@ -10,6 +39,42 @@ To enable automatic discovery of IPP printers (https://wiki.debian.org/CUPSQuick
 - In `/etc/cups/cups-browsed.conf` uncomment `CreateIPPPrinterQueues All`
 - `systemctl restart cups-browsed`
 
+## Map CapsLock to Ctrl/Esc
+
+- Install build dependencies
+```sh
+sudo xbps-install -Sy boost-devel eudev-libudev-devel libevdev-devel yaml-cpp-devel
+```
+- Clone, build and install [Interception Tools](https://gitlab.com/interception/linux/tools)
+```sh
+mkdir -p ~/code
+cd ~/code
+git clone https://gitlab.com/interception/linux/tools.git interception-tools
+cd interception-tools
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+sudo cmake --install build
+```
+- Clone, build and install [caps2esc](https://gitlab.com/interception/linux/plugins/caps2esc)
+```sh
+mkdir -p ~/code
+cd ~/code
+git clone https://gitlab.com/interception/linux/plugins/caps2esc.git
+cd caps2esc
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+sudo cmake --install build
+```
+- Create a service for `udevmon`
+```sh
+sudo mkdir /etc/sv/udevmon
+sudo tee /etc/sv/udevmon/run > /dev/null <<EOT
+#!/bin/sh
+
+exec /usr/local/bin/udevmon
+EOT
+chmod +x /etc/sv/udevmon/run
+```
 
 # ThinkPad laptop
 

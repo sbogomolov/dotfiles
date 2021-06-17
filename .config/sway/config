@@ -34,7 +34,7 @@ exec_always swaymsg titlebar_padding 5 3
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/default.png fill
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -244,9 +244,9 @@ bindsym $mod+r mode "resize"
 mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
     bindsym l mode "default", exec $swaylock
     bindsym o mode "default", exec swaymsg exit
-    bindsym s mode "default", exec systemctl suspend
-    bindsym r mode "default", exec systemctl reboot
-    bindsym u mode "default", exec systemctl poweroff
+    bindsym s mode "default", exec sudo zzz
+    bindsym r mode "default", exec sudo reboot
+    bindsym u mode "default", exec sudo shutdown -h now
     bindsym Escape mode "default"
     bindsym $mod+x mode "default"
 }
@@ -315,14 +315,13 @@ exec sleep 1 && $term --app-id __scratchpad
 ### Start notification daemon
 exec mako
 
-### Add SSH keys to SSH agent
-exec ssh-add
+### Set xcursor theme
+seat * xcursor_theme Adwaita
 
 ### Keyboard configuration
 input "type:keyboard" {
     repeat_delay 400
     repeat_rate 40
-    xkb_options caps:ctrl_modifier
 }
 
 
