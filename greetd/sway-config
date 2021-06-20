@@ -1,0 +1,10 @@
+# `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+exec "GTK_THEME=Adwaita-dark gtkgreet -l; swaymsg exit"
+
+bindsym Mod4+shift+e exec swaynag \
+	-t warning \
+	-m 'What do you want to do?' \
+	-b 'Poweroff' 'shutdown -h now' \
+	-b 'Reboot' 'reboot'
+
+include /etc/sway/config.d/*

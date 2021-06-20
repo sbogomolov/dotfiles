@@ -2,32 +2,6 @@
 
 set -euo pipefail
 
-PROFILE="$HOME/.bash_profile"
-SHELLRC="$HOME/.bashrc"
-
-
-add_line() {
-    file="$1"
-    line="$2"
-    comment="$3"
-
-    echo "Config file: $file"
-
-    if ! grep -Fq "$line" "$file"; then
-        if [ -f "$file" ]; then
-            echo >> "$file"
-        else
-            echo "- Creating file: $file"
-        fi
-
-        echo "- Adding line: $line"
-        echo "$comment" >> "$file"
-        echo "$line" >> "$file"
-    else
-        echo "- File already contains line: $line"
-    fi
-}
-
 
 create_symlink() {
     src="$PWD/$1"
@@ -96,15 +70,9 @@ sudo_copy() {
 }
 
 
-# Amend .bashrc and .bash_profile files
-add_line "$PROFILE" 'export TERMINAL=foot' '# Set terminal'
-add_line "$SHELLRC" ". \"$PWD/.bashrc.d/set_cmd_prompt\"" '# Set command prompt'
-add_line "$SHELLRC" ". \"$PWD/.bashrc.d/fzf_conf\"" '# FZF mappings and options'
-add_line "$PROFILE" 'export PATH="$HOME/.local/bin:$PATH"' '# Add .local/bin to PATH'
-# add_line "$SHELLRC" ". \"$PWD/.bashrc.d/venv_func\"" '# Create/activate Python virtual environment helper function'
-
-
 # Create symlinks
+create_symlink ".bashrc" "$HOME/.bashrc"
+create_symlink ".bash_profile" "$HOME/.bash_profile"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
 create_symlink ".config/sway/config" "$HOME/.config/sway/config"
 create_symlink ".config/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
@@ -130,6 +98,11 @@ create_symlink ".config/mpv/mpv.conf" "$HOME/.config/mpv/mpv.conf"
 create_symlink ".local/bin/j4-footclient" "$HOME/.local/bin/j4-footclient"
 create_symlink ".local/bin/code" "$HOME/.local/bin/code"
 sudo_create_symlink "udevmon.d/caps2esc.yaml" "/etc/interception/udevmon.d/caps2esc.yaml"
+sudo_copy "greetd/config.toml" "/etc/greetd/config.toml"
+sudo_copy "greetd/environments" "/etc/greetd/environments"
+sudo_copy "greetd/sway-config" "/etc/greetd/sway-config"
+sudo chown -R _greeter:_greeter /etc/greetd
+sudo_copy "bin/sway-run.sh" "/usr/local/bin/sway-run.sh"
 # sudo_copy "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
 
 
