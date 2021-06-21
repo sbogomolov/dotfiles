@@ -3,7 +3,7 @@
 ## Install packages:
 
 ```sh
-sudo xbps-install -Sy ImageMagick bash-completion bemenu btrfs-progsr chrony cmake cronie curl firefox font-firacode foot fzf gcc git gnome-themes-extra google-fonts-ttf grim gsettings-desktop-schemas htop i3status iwd j4-dmenu-desktop kwayland make mako mesa-dri mpv qt5-wayland ranger seatd slurp socklog-void sway swayidle swaylock vim void-repo-nonfree vulkan-loader wl-clipboard xdg-user-dirs xdpyinfo yaml-cpp
+sudo xbps-install -Sy ImageMagick bash-completion bemenu btrfs-progsr chrony cmake cronie curl dconf firefox font-firacode foot fzf gcc git gnome-keyring gnome-themes-extra google-fonts-ttf grim gsettings-desktop-schemas htop i3status iwd j4-dmenu-desktop kwayland make mako mesa-dri mpv qt5-wayland ranger ripgrep seatd slurp socklog-void sway swayidle swaylock vim void-repo-nonfree vulkan-loader wl-clipboard xdg-user-dirs xdpyinfo yaml-cpp
 ```
 
 ### Intel CPU and/or Graphics
@@ -32,6 +32,15 @@ sudo xbps-install -Sy iwd light tlp
 ## Hardware acceleration
 
 - https://wiki.archlinux.org/title/Hardware_video_acceleration
+
+## Groups
+
+- Add your user to `video` and `_seatd` groups
+- Add `_greeter` user to `_seatd` group
+
+## Auto-login to gnome-keyring
+
+https://wiki.archlinux.org/title/GNOME/Keyring#PAM_method
 
 ## Printers
 
