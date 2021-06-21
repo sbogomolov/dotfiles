@@ -17,4 +17,4 @@ export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 export NO_AT_BRIDGE=1
 
-sway $@
+dbus-run-session sway $@
