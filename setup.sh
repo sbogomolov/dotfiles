@@ -102,7 +102,7 @@ sudo_copy "greetd/config.toml" "/etc/greetd/config.toml"
 sudo_copy "greetd/environments" "/etc/greetd/environments"
 sudo_copy "greetd/sway-config" "/etc/greetd/sway-config"
 sudo chown -R _greeter:_greeter /etc/greetd
-sudo_copy "bin/sway-run.sh" "/usr/local/bin/sway-run.sh"
+sudo_copy "bin/sway-run" "/usr/local/bin/sway-run"
 sudo_copy "acpi/handler.sh" "/etc/acpi/handler.sh"
 # sudo_copy "lightdm/lightdm-gtk-greeter.conf" "/etc/lightdm/lightdm-gtk-greeter.conf"
 
