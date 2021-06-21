@@ -20,7 +20,9 @@ fi
 export PATH
 
 # Add SSH keys
-ssh-add
+if ! ssh-add -l >/dev/null; then
+    ssh-add
+fi
 
 # gsettings
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
