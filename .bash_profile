@@ -12,11 +12,15 @@ export TERMINAL=foot
 # Source ssh-agent env
 [ -f $HOME/.ssh/ssh-agent-env ] && . $HOME/.ssh/ssh-agent-env
 
+# Add .local/bin to PATH
+if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+export PATH
+
 # Add SSH keys
 ssh-add
-
-# Add .local/bin to PATH
-export PATH="$HOME/.local/bin:$PATH"
 
 # gsettings
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
