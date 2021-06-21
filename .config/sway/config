@@ -324,5 +324,15 @@ input "type:keyboard" {
     repeat_rate 40
 }
 
+### Configure GTK via gsettings
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+    gsettings set org.gnome.desktop.interface document-font-name "sans-serif 10"
+    gsettings set org.gnome.desktop.interface font-name "sans-serif 10"
+    gsettings set org.gnome.desktop.interface monospace-font-name "monospace 10"
+    gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
+    gsettings set org.gnome.desktop.interface font-hinting "slight"
+    gsettings set org.gnome.desktop.interface font-rgba-order "rgb"
+}
 
 include /etc/sway/config.d/*

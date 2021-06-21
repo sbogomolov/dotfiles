@@ -24,14 +24,5 @@ if ! ssh-add -l >/dev/null; then
     ssh-add
 fi
 
-# gsettings
-gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-gsettings set org.gnome.desktop.interface document-font-name "sans-serif 10"
-gsettings set org.gnome.desktop.interface font-name "sans-serif 10"
-gsettings set org.gnome.desktop.interface monospace-font-name "monospace 10"
-gsettings set org.gnome.desktop.interface font-antialiasing "rgba"
-gsettings set org.gnome.desktop.interface font-hinting "slight"
-gsettings set org.gnome.desktop.interface font-rgba-order "rgb"
-
 # Host-specific configuration
 [ -f $HOME/.env ] && . $HOME/.env
