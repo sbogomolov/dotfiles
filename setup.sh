@@ -79,6 +79,7 @@ sudo_copy() {
 # Create symlinks
 create_symlink ".bashrc" "$HOME/.bashrc"
 create_symlink ".bash_profile" "$HOME/.bash_profile"
+create_symlink ".profile" "$HOME/.profile"
 create_symlink ".config/i3status/config" "$HOME/.config/i3status/config"
 create_symlink ".config/sway/config" "$HOME/.config/sway/config"
 create_symlink ".config/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"

@@ -4,7 +4,7 @@
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
-export XDG_RUNTIME_DIR="/tmp/${UID}-runtime-dir"
+export XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
 mkdir -p ${XDG_RUNTIME_DIR}
 
 export MOZ_ENABLE_WAYLAND=1
