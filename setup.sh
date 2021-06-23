@@ -50,8 +50,8 @@ copy() {
 
     if [ -e "$dst" ]; then
         echo "- File or directory already exists"
-        md5_old="$(md5sum "$dst" | awk '{ print $1 }')"
-        md5_new="$(md5sum "$src" | awk '{ print $1 }')"
+        md5_old="$(sha256sum "$dst" | awk '{ print $1 }')"
+        md5_new="$(sha256sum "$src" | awk '{ print $1 }')"
         if [ "$md5_old" = "$md5_new" ]; then
             echo "- Files are identical, skipping the copy"
             return
