@@ -324,8 +324,14 @@ input "type:keyboard" {
     repeat_rate 40
 }
 
-### Update DISPLAY
-exec dbus-update-activation-environment DISPLAY
+### Update dbus env
+exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY
+
+### Start pipewire
+exec {
+    pipewire
+    pipewire-pulse
+}
 
 ### Configure GTK via gsettings
 exec_always {

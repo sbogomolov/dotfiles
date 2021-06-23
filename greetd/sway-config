@@ -1,3 +1,5 @@
+exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY
+
 # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
 exec "GTK_THEME=Adwaita-dark gtkgreet -l; swaymsg exit"
 
