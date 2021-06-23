@@ -31,6 +31,9 @@ font pango:monospace 9.7
 ### Title bar padding
 exec_always swaymsg titlebar_padding 5 3
 
+### Minimum floating windows size
+floating_minimum_size 50 x 25
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -265,7 +268,7 @@ for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="system-config-printer"] floating enable
 for_window [class="Lxappearance"] floating enable
-for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable, border none
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable, border none, move position 50 ppt 0 ppt, move left 28 px
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, border none
 for_window [app_id="chromium.*" title="Save File"] floating enable
 for_window [app_id="chromiun.*" title="Page Unresponsive"] floating enable
