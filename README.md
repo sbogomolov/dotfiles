@@ -35,7 +35,7 @@ sudo xbps-install -Sy iwd light tlp
 
 ## Groups
 
-- Add your user to `video` and `_seatd` groups
+- Add your user to groups: audio, video, \_seatd
 - Add `_greeter` user to `_seatd` group
 
 ## Auto-login to gnome-keyring
