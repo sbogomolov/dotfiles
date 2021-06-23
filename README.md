@@ -3,7 +3,7 @@
 ## Install packages:
 
 ```sh
-sudo xbps-install -Sy ImageMagick bash-completion bemenu btrfs-progsr chrony cmake cronie curl dconf firefox font-firacode foot fzf gcc git gnome-keyring gnome-themes-extra google-fonts-ttf grim gsettings-desktop-schemas htop i3status j4-dmenu-desktop kwayland make mako mesa-dri mpv pipewire pulseaudio-utils qt5-wayland ranger ripgrep seatd slurp socklog-void sway swayidle swaylock vim void-repo-nonfree vulkan-loader wl-clipboard xdg-desktop-portal-wlr xdg-user-dirs xdpyinfo yaml-cpp
+sudo xbps-install -Sy ImageMagick bash-completion bemenu btrfs-progsr chrony cmake cronie curl dconf firefox font-firacode foot fzf gcc git gnome-keyring gnome-themes-extra google-fonts-ttf grim gsettings-desktop-schemas htop i3status j4-dmenu-desktop kwayland make mako mesa-dri mpv pavucontrol pipewire pulseaudio-utils qt5-wayland ranger ripgrep seatd slurp socklog-void sway swayidle swaylock vim void-repo-nonfree vulkan-loader wl-clipboard xdg-desktop-portal-wlr xdg-user-dirs xdpyinfo yaml-cpp
 ```
 
 ### Intel CPU and/or Graphics
