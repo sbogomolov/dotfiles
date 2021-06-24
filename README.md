@@ -29,6 +29,10 @@ sudo xbps-install -Sy iwd light tlp
 
 - Run ./setup.sh
 
+### Pipewire
+
+By default pipewire uses rtkit, which needs polkit, which in turn requires a login session, which needs systemd-logind or elogind. However, it works fine without it but shows quite a few warnings. To disable rtkit copy default configuration files from `/usr/share/pipewire` to `/etc/pipewire` and comment out everywhere the rtkit module
+
 ## Hardware acceleration
 
 - https://wiki.archlinux.org/title/Hardware_video_acceleration
