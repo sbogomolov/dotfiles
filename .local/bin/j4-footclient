@@ -1,3 +1,4 @@
 #!/bin/sh
 
-footclient "${@:2}"
+shift
+footclient "${@}"
