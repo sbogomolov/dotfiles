@@ -22,7 +22,7 @@ sudo xbps-install -Sy intel-video-accel libvdpau-va-gl mesa-vulkan-intel
 ### Extra packages for the laptop:
 
 ```sh
-sudo xbps-install -Sy iwd light tlp
+sudo xbps-install -Sy crda iwd light tlp
 ```
 
 ## Setting up configuration files:
