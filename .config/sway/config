@@ -315,9 +315,6 @@ exec foot --server
 ### Start scratchpad terminal
 exec sleep 1 && $term --app-id __scratchpad
 
-### Start notification daemon
-exec mako
-
 ### Set xcursor theme
 seat * xcursor_theme Adwaita
 
