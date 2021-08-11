@@ -49,7 +49,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 exec swayidle -w \
     timeout 600 "$swaylock" \
     timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep "$swaylock"
+    # before-sleep "$swaylock"
 
 ### Input configuration
 #
@@ -247,7 +247,7 @@ bindsym $mod+r mode "resize"
 mode "exit: [l]ock, l[o]gout, [s]leep, [r]eboot, sh[u]tdown" {
     bindsym l mode "default", exec $swaylock
     bindsym o mode "default", exec swaymsg exit
-    bindsym s mode "default", exec sudo zzz
+    bindsym s mode "default", exec "$swaylock && sudo zzz"
     bindsym r mode "default", exec sudo reboot
     bindsym u mode "default", exec sudo shutdown -h now
     bindsym Escape mode "default"
